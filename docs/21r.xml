@@ -52,12 +52,12 @@
             <p style="text-indent:20px">               
                It was on a dreary night of November<lb/>
                
-               that I beheld 
-               <del type="crossedOut" hand="#PBS" rend="blackink">
-                  <add place="supralinear" hand="#PBS" rend="blackink">
-                     the frame on whic
-                  </add>
-               </del> 
+               that I beheld               
+               <add place="supralinear" hand="#PBS" rend="blackink">
+                  <del type="crossedOut" hand="#PBS" rend="blackink">
+                  the frame on whic
+                  </del>
+               </add>                
                my man comple
                <del type="overwritten" hand="#MWS" rend="blackink">
                   at

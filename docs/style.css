@@ -10,9 +10,9 @@ img {
     max-width: 100%;
 }
 
-/*p {
+.style {
     text-indent: 20px;
-}*/
+}
 
 .row {
     width: 100%;
@@ -36,5 +36,39 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 90%;
+}
+
+.supralinear {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+br {
+    margin-bottom: 3px; /* Adds space below each line break */
+}
+
+/*for page 23r with the indented list*/
+ul.indent-list {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+ul.indent-list li {
+    margin-bottom: 1px;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+}
+
+.main-left, .main-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.main-left img {
+    width: 100%; /* Makes the image fill the div */
+    height: auto; /* Maintains the aspect ratio of the image */
 }

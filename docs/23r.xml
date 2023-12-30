@@ -100,42 +100,33 @@
                
             </p>
             
-            <list>
+            <p>            
+               <list>
+                  <item>
+                     "Like one who on a lon
+                     <del type="crossedOut" hand="#MWS" rend="blackink">
+                        s
+                     </del>
+                     esome road
+                  </item>
                <item>
-                  "Like one who on a lon
-                  <del type="crossedOut" hand="#MWS" rend="blackink">
-                     s
-                  </del>
-                  esome road
+                  "and having once turned round walks on
+               </item>               
+               <item>                  
+                  And turns no more his head
                </item>
-            <item>
-               "and having once turned round
-            </item>
-            <item rend="right">
-               <add place="supralinear" hand="#MWS" rend="blackink">
-                  walks on
-               </add>
-            </item>
-            <item>
-               <del type="crossedOut" hand="#MWS" rend="blackink">
-                  wal
-               </del>
-               And turns no more his head
-            </item>
-            <item>
-               Because he knows a frightful
-            </item>
-            <item rend="right">
-               fiend
-            </item>
-            <item>
-               "doth close behind hum tread."*
-               <add place="marginleft" hand="#MS" rend="blackink">
-                  *Coleridge's<lb/>
-                  "Ancient Mariner.'
-               </add>
-            </item>
-            </list>
+               <item>
+                  Because he knows a frightful fiend
+               </item>               
+               <item>
+                  "doth close behind him tread."*
+                  <add place="marginleft" hand="#MS" rend="blackink">
+                     *Coleridge's<lb/>
+                     "Ancient Mariner.'
+                  </add>
+               </item>
+               </list>
+            </p>
             
             <p>
                Continueing thus, I came at lenght<lb/>

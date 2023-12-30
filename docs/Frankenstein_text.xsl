@@ -64,10 +64,27 @@
     </xsl:template>
     
     <!-- all the supralinear additions are given in a span with the class supraAdd, make sure to put this class in superscript in the CSS file, -->
-    <xsl:template match="tei:add[@place = 'supralinear']">
-        <span class="supraAdd">
+        
+    <xsl:template match="*[@place='supralinear']">
+        <span class="supralinear">
             <xsl:apply-templates/>
         </span>
+    </xsl:template>
+    
+    <xsl:template match="tei:lb">
+        <br/>
+    </xsl:template>
+    
+    <xsl:template match="tei:p/tei:list">
+        <ul class="indent-list">
+            <xsl:apply-templates/>
+        </ul>
+    </xsl:template>
+    
+    <xsl:template match="tei:p/tei:list/tei:item">
+        <li>
+            <xsl:apply-templates/>
+        </li>
     </xsl:template>
     
     
