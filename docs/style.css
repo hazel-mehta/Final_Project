@@ -1,9 +1,19 @@
-body {
-
-}
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+
+body {
+    background-color: #e1ecf2;
+}
+
+.transcription-box {
+    border: 1px solid #000; /* Adds a border around the box */
+    padding: 15px; /* Adds some space inside the box */
+    margin: 20px auto; /* Centers the box and adds margin */
+    max-width: 800px; /* Maximum width of the box */
+    background-color: #f9f9f9; /* Background color for the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
 }
 
 img {
@@ -24,10 +34,6 @@ img {
   margin-right: 10px;
 }
 
-.marginAdd {
-    display: none;
-}
-
 .mirador-canvas-nav {
     display: none !important;
 }
@@ -36,12 +42,7 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
-}
-
-.supralinear {
-    vertical-align: super;
-    font-size: smaller;
+  width: 70%;
 }
 
 br {
@@ -72,3 +73,90 @@ ul.indent-list li {
     width: 100%; /* Makes the image fill the div */
     height: auto; /* Maintains the aspect ratio of the image */
 }
+
+.circled-page-number {
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.PBS {
+    color: red; /* Color for PBS's edits */
+}
+
+.MWS {
+    color: blue; /* Color for MWS's edits */
+}
+
+.PBS.margin-edit{
+    color: red; 
+}
+
+.MWS.margin-edit {
+    color: blue; 
+}
+
+.MWS.strikethrough {
+    text-decoration: line-through;
+    color: blue;
+}
+
+.PBS.strikethrough {
+    text-decoration: line-through;
+    color: red;
+}
+
+.MWS.supralinear {
+    vertical-align: super;
+    font-size: smaller;
+    color: blue;
+}
+
+.PBS.supralinear {
+    vertical-align: super;
+    font-size: smaller;
+    color: red;
+}
+
+.MWS.underlined {
+    text-decoration: underline;
+    color: blue;
+}
+
+.PBS.underlined {
+    text-decoration: underline;
+    color: red;
+}
+
+.marginAdd {
+    display: none;
+}
+
+.col1-meta {
+    position: absolute;
+    top: 40px;
+    right: 25px;
+    width: 700px; 
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 0.9em;
+    border-radius: 5px;
+    z-index: 1;
+    background-color: #f9f9f9;
+}
+
+.col2-meta {
+    width: 30%; 
+    margin: 20px 0 0;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+

@@ -9,68 +9,91 @@
     <xsl:template match="tei:teiHeader"/>
 
     <xsl:template match="tei:body">
-        <div class="row">
-        <div class="col-3"><br/><br/><br/><br/><br/>
-            <xsl:for-each select="//tei:add[@place = 'marginleft']">
-                <xsl:choose>
-                    <xsl:when test="parent::tei:del">
-                        <del>
-                            <xsl:attribute name="class">
-                                <xsl:value-of select="attribute::hand" />
-                            </xsl:attribute>
-                            <xsl:value-of select="."/></del><br/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <span >
-                            <xsl:attribute name="class">
-                                <xsl:value-of select="attribute::hand" />
-                            </xsl:attribute>
-                        <xsl:value-of select="."/><br/>
+        <div class="transcription-box">
+            <div class="row">
+                <div class="col-3"><br/><br/><br/><br/><br/>
+                    <xsl:for-each select="//tei:add[@place = 'marginleft']">
+                        <span class="{substring-after(@hand, '#')} margin-edit">
+                            <xsl:apply-templates/><br/>
                         </span>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:for-each> 
-        </div>
-        <div class="col-9">
-            <div class="transcription">
-                <xsl:apply-templates select="//tei:div"/>
+                    </xsl:for-each>
+                </div>
+                <div class="col-9">
+                    <div class="transcription">
+                        <xsl:apply-templates select="//tei:div[not(ancestor::tei:add[@place='marginleft'])]"/>
+                    </div>
+                </div>
             </div>
         </div>
-        </div> 
     </xsl:template>
     
-    <xsl:template match="tei:div">
-        <div class="#MWS"><xsl:apply-templates/></div>
-    </xsl:template>
-    
-    <xsl:template match="tei:p">
-        <p><xsl:apply-templates/></p>
-    </xsl:template>
-
-  
     <xsl:template match="tei:add[@place = 'marginleft']">
         <span class="marginAdd">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     
-    <xsl:template match="tei:del">
-        <del>
-            <xsl:attribute name="class">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
+    <xsl:template match="tei:add[@place='marginleft'] | tei:del[@place='marginleft']">
+        <span class="{substring-after(@hand, '#')} margin-edit">
             <xsl:apply-templates/>
-        </del>
+        </span>
     </xsl:template>
-    
-    <!-- all the supralinear additions are given in a span with the class supraAdd, make sure to put this class in superscript in the CSS file, -->
-        
-    <xsl:template match="*[@place='supralinear']">
-        <span class="supralinear">
+   
+   <!--It became optimal to separate each attribute rather than element, due to overriding complications-->
+    <xsl:template match="*[@type='crossedOut']">
+        <span class="{substring-after(@hand, '#')} strikethrough">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     
+    <xsl:template match="*[@type='overwritten']">
+        <span class="{substring-after(@hand, '#')} strikethrough">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
+    <xsl:template match="*[@place='overwritten']">
+        <span class="{substring-after(@hand, '#')} supralinear">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+       
+    <xsl:template match="*[@place='supralinear']">
+        <span class="{substring-after(@hand, '#')} supralinear">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
+    <xsl:template match="*[@rendition='underlined']">
+        <span class="{substring-after(@hand, '#')} underlined">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
+    <xsl:template match="*[@rend='underlined']">
+        <span class="{substring-after(@hand, '#')} underlined">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+        
+    <!--Circled Page Number:-->
+    <xsl:template match="tei:metamark[@function='pagenumber']">
+        <span class="circled-page-number">
+            <xsl:value-of select="num/hi"/>
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>        
+        
+    <xsl:template match="tei:p">
+        <p><xsl:apply-templates/></p>
+    </xsl:template>    
+    
+    <xsl:template match="tei:div">
+        <div class="#MWS">
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
+            
     <xsl:template match="tei:lb">
         <br/>
     </xsl:template>
@@ -86,9 +109,5 @@
             <xsl:apply-templates/>
         </li>
     </xsl:template>
-    
-    
-    <!-- add additional templates below, for example to transform the tei:lb in <br/> empty elements, tei:hi[@rend = 'sup'] in <sup> elements, the underlined text, additions with the attribute "overwritten" etc. -->
-
     
 </xsl:stylesheet>

@@ -10,14 +10,14 @@
     
     <xsl:template match="tei:TEI">
                      <div class="row">
-                         <div class="col">
+                         <div class="col1-meta">
                              <h4>About the manuscript page:</h4>
                              <h5>Source Description:</h5>
                              <xsl:value-of select="//tei:sourceDesc"/>
                              <h5>Licence:</h5>
                              <xsl:value-of select="//tei:licence"/> <!-- You can change the way the metadata is visualised as well-->
                          </div>
-                         <div class="col">
+                         <div class="col2-meta">
                             <ul> 
                                 <li>
                                     Total number of modifications: 

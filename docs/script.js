@@ -68,7 +68,7 @@ function documentLoader() {
     });
   }
   
-// function to transform the metadate encoded in teiHeader with the xsl stylesheet "Frankenstein_meta.xsl", this will apply the templates and output the text in the html <div id="stats">
+// function to transform the metadata encoded in teiHeader with the xsl stylesheet "Frankenstein_meta.xsl", this will apply the templates and output the text in the html <div id="stats">
   function statsLoader() {
 
     Promise.all([
@@ -96,23 +96,46 @@ function documentLoader() {
   // Initial document load
   documentLoader();
   statsLoader();
-  // Event listener for sel1 change
-  function selectHand(event) {
-  var visible_mary = document.getElementsByClassName('#MWS');
-  var visible_percy = document.getElementsByClassName('#PBS');
-  // Convert the HTMLCollection to an array for forEach compatibility
-  var MaryArray = Array.from(visible_mary);
-  var PercyArray = Array.from(visible_percy);
-    if (event.target.value == 'both') {
-    //write an forEach() method that shows all the text written and modified by both hand (in black?). The forEach() method of Array instances executes a provided function once for each array element.
-     
-    } else if (event.target.value == 'Mary') {
-     //write an forEach() method that shows all the text written and modified by Mary in a different color (or highlight it) and the text by Percy in black. 
-     
-    } else {
-     //write an forEach() method that shows all the text written and modified by Percy in a different color (or highlight it) and the text by Mary in black.
-    
+
+function selectHand(event) {
+    var edits_mary = document.querySelectorAll('.MWS'); // Mary's edits
+    var edits_percy = document.querySelectorAll('.PBS'); // Percy's edits
+    var allText = document.querySelectorAll('.text'); // All text
+
+    // Function to reset styles
+    function resetStyles(elements) {
+        elements.forEach(function(element) {
+            element.style.color = 'black'; // Reset text color to default
+            element.classList.remove('highlight-mary', 'highlight-percy');
+        });
     }
-  }
-// write another function that will toggle the display of the deletions by clicking on a button
-// EXTRA: write a function that will display the text as a reading text by clicking on a button or another dropdown list, meaning that all the deletions are removed and that the additions are shown inline (not in superscript)
+
+    // Apply style changes based on selection
+    if (event.target.value === 'Mary') {
+        resetStyles(allText);
+        edits_mary.forEach(function(edit) {
+            edit.style.color = 'blue'; // Mary's edits in blue
+        });
+        edits_percy.forEach(function(edit) {
+            edit.style.color = 'lightgrey'; // Percy's edits faint
+        });
+    } else if (event.target.value === 'Percy') {
+        resetStyles(allText);
+        edits_mary.forEach(function(edit) {
+            edit.style.color = 'lightgrey'; // Mary's edits faint
+        });
+        edits_percy.forEach(function(edit) {
+            edit.style.color = 'red'; // Percy's edits in red
+        });
+    } else {
+        // Reset to default for "Both Hands"
+        resetStyles(allText);
+        resetStyles(allText);
+        edits_mary.forEach(function(edit) {
+            edit.style.color = 'blue'; // Mary's edits in blue
+        });
+        edits_percy.forEach(function(edit) {
+            edit.style.color = 'red'; // Percy's edits in red
+        });
+    }
+}
